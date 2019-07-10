@@ -59,7 +59,11 @@
         </div>
         <div class="activ">
             <h3>Activities:</h3>
-            <p> PLACEHOLDER </p>
+            {% for message in request.session.messages %}
+                {% autoescape off %}
+                {{message}}
+                {% endautoescape %}
+            {% endfor %}
         </div>
     </div>
 </body>
