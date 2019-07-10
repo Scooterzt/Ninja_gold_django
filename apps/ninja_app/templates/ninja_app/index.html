@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja_Gold_Django</title>
+    <style>
+        *{
+            margin: 5px;
+        }
+        .findgold{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wall">
+        <h1>Your Gold: {{request.session.your_gold}}</h1>
+        <form method="post" action="/reset" >
+            {% csrf_token %}
+            <input type="submit" name="reset" value="reset Your game">
+        </form>
+        <div class="findgold">
+            <h3>Farm</h3>
+            <p>(earns 10-20 golds)</p>
+            <form method ="post" action="/process_money">
+                {% csrf_token %}
+                <input type="hidden" name="location" value = "farm">
+                <input type="submit" name="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="findgold">
+            <h3>Cave</h3>
+            <p>(earns 5-10 golds)</p>
+            <form method ="post" action="/process_money">
+                {% csrf_token %}
+                <input type="hidden" name="location" value = "cave">
+                <input type="submit" name="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="findgold">
+            <h3>House</h3>
+            <p>(earns 2-5 golds)</p>
+            <form method ="post" action="/process_money">
+                {% csrf_token %}
+                <input type="hidden" name="location" value = "house">
+                <input type="submit" name="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="findgold">
+            <h3>Casino</h3>
+            <p>(earns/takes 0-50 golds)</p>
+            <form method ="post" action="/process_money">
+                {% csrf_token %}
+                <input type="hidden" name="location" value = "casino">
+                <input type="submit" name="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="activ">
+            <h3>Activities:</h3>
+            <p> PLACEHOLDER </p>
+        </div>
+    </div>
+</body>
+</html>
